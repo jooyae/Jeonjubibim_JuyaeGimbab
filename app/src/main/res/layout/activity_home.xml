@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:paddingHorizontal="20dp"
+    tools:context=".HomeActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_home"
+        app:layout_constraintGuide_begin="8dp"
+        app:layout_constraintGuide_end="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+
+        <ImageView
+            android:id="@+id/imageview_profile"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/tiger"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textview_profile_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="juyae"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageview_profile" />
+
+        <TextView
+            android:id="@+id/textview_profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="박주예"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textview_profile_id" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_profile_name"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/textview_profile_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_intro"
+            android:textColor="@color/white" />
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
