@@ -10,6 +10,18 @@
     android:paddingHorizontal="24dp"
     tools:context=".SignInActivity">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationview_signup_image"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toTopOf="@id/textview_signin_id"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="lottie_image.json"
+        app:lottie_loop="true" />
+
 
     <TextView
         android:id="@+id/textview_signin_id"
@@ -18,10 +30,11 @@
         android:text="깃허브 아이디"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/animationview_signup_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editext_signin_id"
@@ -59,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="LOGIN"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/orange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editext_signin_pwd" />
