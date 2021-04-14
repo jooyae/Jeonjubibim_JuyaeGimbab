@@ -29,9 +29,19 @@ class FollowingListFragment : Fragment() {
         followingListAdapter = FollowingListAdapter()
         binding.userList.adapter = followingListAdapter
         loadDatas()
-
+        initRecyclerView()
 
     }
+
+    private fun initRecyclerView(){
+        followingListAdapter = FollowingListAdapter()
+        binding.userList.adapter = followingListAdapter
+
+    }
+    private fun loadUserDatas() {
+        followingListAdapter.submitList(followingUserInfo)
+    }
+
 
     private fun loadDatas() {
         followingUserInfo.apply {
