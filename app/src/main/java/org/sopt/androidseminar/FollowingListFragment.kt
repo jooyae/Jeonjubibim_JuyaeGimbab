@@ -18,16 +18,13 @@ class FollowingListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentFollowingListBinding.inflate(inflater, container, false)
-        return inflater.inflate(R.layout.fragment_following_list, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        followingListAdapter = FollowingListAdapter()
-        binding.userList.adapter = followingListAdapter
         loadDatas()
         initRecyclerView()
 
@@ -36,8 +33,9 @@ class FollowingListFragment : Fragment() {
     private fun initRecyclerView(){
         followingListAdapter = FollowingListAdapter()
         binding.userList.adapter = followingListAdapter
-
+        loadUserDatas()
     }
+
     private fun loadUserDatas() {
         followingListAdapter.submitList(followingUserInfo)
     }
