@@ -66,7 +66,7 @@ class SignInActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.d("onStart","onStart 실행")
+        Log.d("onResume","onResume 살행")
     }
 
     override fun onResume() {

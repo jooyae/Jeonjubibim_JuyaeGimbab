@@ -1,6 +1,6 @@
 package org.sopt.androidseminar
 
 data class FollowingUserInfo(
-    val userImage: String,
+    val userImage: Int,
     val userName: String
 )

@@ -5,13 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil.setContentView
 import org.sopt.androidseminar.databinding.FragmentFollowingListBinding
 
 class FollowingListFragment : Fragment() {
 
     lateinit var binding: FragmentFollowingListBinding
-
     lateinit var followingListAdapter: FollowingListAdapter
+    private val followingUserInfo = mutableListOf<FollowingUserInfo>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,30 +27,46 @@ class FollowingListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         followingListAdapter = FollowingListAdapter()
-
         binding.userList.adapter = followingListAdapter
+        loadDatas()
 
-        followingListAdapter.userList.addAll(
-            listOf<FollowingUserInfo>(
+
+    }
+
+    private fun loadDatas() {
+        followingUserInfo.apply {
+            add(
                 FollowingUserInfo(
-                    userImage = "@drawable/tiger",
-                    userName = "juyae"
-                ),
+                    R.drawable.ic_home_img_step0,
+                    userName = "juyae1"
+                )
+            )
+            add(
                 FollowingUserInfo(
-                    userImage = "@drawable/tiger",
+                    R.drawable.ic_home_img_step1,
                     userName = "juyae2"
-                ),
+                )
+            )
+            add(
                 FollowingUserInfo(
-                    userImage = "@drawable/tiger",
+                    R.drawable.ic_home_img_step2,
                     userName = "juyae3"
-                ),
+                )
+            )
+            add(
                 FollowingUserInfo(
-                    userImage = "@drawable/tiger",
+                    R.drawable.ic_home_img_step3,
                     userName = "juyae4"
                 )
             )
-        )
-        followingListAdapter.notifyDataSetChanged()
+            add(
+                FollowingUserInfo(
+                    R.drawable.ic_home_img_step4,
+                    userName = "juyae5"
+                )
+            )
+        }
+
     }
 
 
