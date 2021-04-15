@@ -8,17 +8,17 @@ import androidx.recyclerview.widget.RecyclerView
 import org.sopt.androidseminar.databinding.ItemFollowUserBinding
 
 class FollowingListAdapter : RecyclerView.Adapter<FollowingListAdapter.FollowingUserViewHolder>() {
-    val diffCallback = object : DiffUtil.ItemCallback<FollowingUserInfo>(){
+    val diffCallback = object : DiffUtil.ItemCallback<GithubRepo>(){
         override fun areItemsTheSame(
-            oldItem: FollowingUserInfo,
-            newItem: FollowingUserInfo
+            oldItem: GithubRepo,
+            newItem: GithubRepo
         ): Boolean {
             return oldItem.hashCode() == newItem.hashCode()
         }
 
         override fun areContentsTheSame(
-            oldItem: FollowingUserInfo,
-            newItem: FollowingUserInfo
+            oldItem: GithubRepo,
+            newItem: GithubRepo
         ): Boolean {
             return oldItem == newItem
         }
@@ -26,7 +26,7 @@ class FollowingListAdapter : RecyclerView.Adapter<FollowingListAdapter.Following
     }
     val differ = AsyncListDiffer(this, diffCallback)
 
-    fun submitList(list : List<FollowingUserInfo>) = differ.submitList(list)
+    fun submitList(list : List<GithubRepo>) = differ.submitList(list)
 
     override fun onCreateViewHolder(
         parent: ViewGroup,

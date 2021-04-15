@@ -1,6 +1,8 @@
 package org.sopt.androidseminar
 
 data class FollowingUserInfo(
-    val userImage: Int,
-    val userName: String
+    val repositoryName: String,
+    val repositoryId: String,
+    val repositoryDate: String,
+    val repositoryUrl : String
 )

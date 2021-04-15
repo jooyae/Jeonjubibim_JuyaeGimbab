@@ -5,37 +5,48 @@
     <data>
         <variable
             name="data"
-            type="org.sopt.androidseminar.FollowingUserInfo" />
+            type="org.sopt.androidseminar.GithubRepo" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
-
-    <ImageView
-        android:id="@+id/follow_user_image"
-        uploadImage="@{data.userImage}"
-        android:layout_width="50dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+    android:padding="8dp"
+    android:background="@drawable/item_divider">
 
     <TextView
-        android:id="@+id/follow_user_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text ="@{data.userName}"
-        android:textSize="20sp"
+        android:id="@+id/github_repository_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintStart_toEndOf="@id/follow_user_image"
-        app:layout_constraintBottom_toBottomOf="@id/follow_user_image"
+        android:text ="@{data.repository_name}"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text = "RepositoryName"/>
+
+
+    <TextView
+        android:id="@+id/github_repository_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text ="@{data.repository_id}"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/follow_user_image"
+        app:layout_constraintTop_toBottomOf="@id/github_repository_name"
         tools:text = "userId"/>
+
+    <TextView
+        android:id="@+id/github_repository_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{data.repository_date}"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/github_repository_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text = "repositoryDate"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
