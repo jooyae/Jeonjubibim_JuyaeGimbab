@@ -1,13 +1,19 @@
 package org.sopt.androidseminar
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.androidseminar.databinding.ItemFollowUserBinding
 
-class FollowingListAdapter : RecyclerView.Adapter<FollowingListAdapter.FollowingUserViewHolder>() {
+class FollowingListAdapter(val listener: OnItemClickListener) : RecyclerView.Adapter<FollowingListAdapter.FollowingUserViewHolder>() {
     val diffCallback = object : DiffUtil.ItemCallback<GithubRepo>(){
         override fun areItemsTheSame(
             oldItem: GithubRepo,
@@ -24,6 +30,11 @@ class FollowingListAdapter : RecyclerView.Adapter<FollowingListAdapter.Following
         }
 
     }
+
+    interface OnItemClickListener{
+        fun itemClickListener(view: View, position: Int)
+    }
+
     val differ = AsyncListDiffer(this, diffCallback)
 
     fun submitList(list : List<GithubRepo>) = differ.submitList(list)
@@ -47,6 +58,10 @@ class FollowingListAdapter : RecyclerView.Adapter<FollowingListAdapter.Following
     ) {
         val item = differ.currentList[position]
         holder.binding.setVariable(BR.data,item)
+
+        holder.binding.constraintlayoutItemGithub.setOnClickListener{
+            listener.itemClickListener(holder.binding.root, position)
+        }
     }
 
     inner class FollowingUserViewHolder(val binding: ItemFollowUserBinding):

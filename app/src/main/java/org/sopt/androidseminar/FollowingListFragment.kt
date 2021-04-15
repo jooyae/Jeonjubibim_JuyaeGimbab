@@ -1,6 +1,8 @@
 package org.sopt.androidseminar
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -16,7 +18,7 @@ class FollowingListFragment : Fragment() {
 
     lateinit var binding: FragmentFollowingListBinding
     lateinit var followingListAdapter: FollowingListAdapter
-    private val followingUserInfo = mutableListOf<FollowingUserInfo>()
+    private val followingUserInfo = mutableListOf<GithubRepo>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +36,13 @@ class FollowingListFragment : Fragment() {
     }
 
     private fun initRecyclerView(){
-        followingListAdapter = FollowingListAdapter()
+        followingListAdapter = FollowingListAdapter(object : FollowingListAdapter.OnItemClickListener{
+            override fun itemClickListener(view: View, position: Int) {
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.setData(Uri.parse(followingUserInfo[position].repository_url))
+                startActivity(intent)
+            }
+        })
         binding.recyclerviewRepositoryList.adapter = followingListAdapter
 
     }
@@ -44,6 +52,7 @@ class FollowingListFragment : Fragment() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ list ->
+                followingUserInfo.addAll(list)
                 followingListAdapter.submitList(list)
             }, {
                 it.printStackTrace()

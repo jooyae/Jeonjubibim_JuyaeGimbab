@@ -9,10 +9,14 @@
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraintlayout_item_github"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp"
-    android:background="@drawable/item_divider">
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/item_divider"
+    android:foreground="?attr/selectableItemBackground">
 
     <TextView
         android:id="@+id/github_repository_name"
