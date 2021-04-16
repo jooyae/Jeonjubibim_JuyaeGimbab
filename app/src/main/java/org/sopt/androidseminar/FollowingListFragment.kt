@@ -18,7 +18,7 @@ class FollowingListFragment : Fragment() {
 
     lateinit var binding: FragmentFollowingListBinding
     lateinit var followingListAdapter: FollowingListAdapter
-    private val followingUserInfo = mutableListOf<GithubRepo>()
+    private val followingUserInfo = mutableListOf<RepositoryResponseModelItem>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +39,7 @@ class FollowingListFragment : Fragment() {
         followingListAdapter = FollowingListAdapter(object : FollowingListAdapter.OnItemClickListener{
             override fun itemClickListener(view: View, position: Int) {
                 val intent = Intent(Intent.ACTION_VIEW)
-                intent.setData(Uri.parse(followingUserInfo[position].repository_url))
+                intent.setData(Uri.parse(followingUserInfo[position].clone_url))
                 startActivity(intent)
             }
         })

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="data"
-            type="org.sopt.androidseminar.GithubRepo" />
+            type="org.sopt.androidseminar.RepositoryResponseModelItem" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,17 +24,18 @@
         android:layout_height="match_parent"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:text ="@{data.repository_name}"
+        android:text ="@{data.name}"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:text = "RepositoryName"/>
 
 
     <TextView
-        android:id="@+id/github_repository_id"
+        android:id="@+id/github_repository_explain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text ="@{data.repository_id}"
+        android:text ="@{data.description != null ? data.description : @string/no_description}"
+        android:textColor="@{data.description != null ? @color/purple_200 : @color/black}"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,12 +43,12 @@
         tools:text = "userId"/>
 
     <TextView
-        android:id="@+id/github_repository_date"
+        android:id="@+id/github_repository_language"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@{data.repository_date}"
+        android:text="@{data.language.toString()}"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/github_repository_id"
+        app:layout_constraintTop_toBottomOf="@id/github_repository_explain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:text = "repositoryDate"/>

@@ -23,15 +23,25 @@
         android:id="@+id/imageview_profile"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/juyaeiscute"
         android:layout_marginTop="20dp"
+        android:background="@drawable/juyaeiscute"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintWidth_percent="0.4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.4" />
 
-        <TextView
+
+    <Button
+        android:id="@+id/button_home_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_button_plus"
+        app:layout_constraintBottom_toBottomOf="@+id/imageview_profile"
+        app:layout_constraintEnd_toEndOf="@+id/scrollView2"
+        app:layout_constraintStart_toEndOf="@+id/imageview_profile" />
+
+    <TextView
             android:id="@+id/textview_profile_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,11 +62,12 @@
             app:layout_constraintTop_toBottomOf="@id/textview_profile_id" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_profile_name"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/textview_profile_name">
 
         <TextView
             android:id="@+id/textview_profile_intro"
