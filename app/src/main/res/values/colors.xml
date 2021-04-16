@@ -10,5 +10,11 @@
     <color name = "orange">#DFF87E58</color>
     <color name="gray">#3C050505</color>
     <color name ="colorControlHighlight">#fd4381</color>
+    <color name ="pink">#EF5DA8</color>
+    <color name="pink_two">#F178B6</color>
+    <color name="pink_three">#FCDDEC</color>
+    <color name="purple">#5D5FEF</color>
+    <color name="purple_two">#7879F1</color>
+    <color name ="purple_three">#A5A6F6</color>
 
 </resources>
