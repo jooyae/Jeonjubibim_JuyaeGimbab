@@ -9,7 +9,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
+import android.widget.GridLayout.VERTICAL
+import android.widget.GridView
 import androidx.databinding.DataBindingUtil.setContentView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import org.sopt.androidseminar.databinding.FragmentFollowingListBinding
@@ -33,17 +38,22 @@ class FollowingListFragment : Fragment() {
 
         initRecyclerView()
         setGithubProfile()
+        changeLayoutManager()
     }
 
-    private fun initRecyclerView(){
-        followingListAdapter = FollowingListAdapter(object : FollowingListAdapter.OnItemClickListener{
-            override fun itemClickListener(view: View, position: Int) {
-                val intent = Intent(Intent.ACTION_VIEW)
-                intent.setData(Uri.parse(followingUserInfo[position].clone_url))
-                startActivity(intent)
-            }
-        })
-        binding.recyclerviewRepositoryList.adapter = followingListAdapter
+    private fun initRecyclerView() {
+        followingListAdapter =
+            FollowingListAdapter(object : FollowingListAdapter.OnItemClickListener {
+                override fun itemClickListener(view: View, position: Int) {
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.setData(Uri.parse(followingUserInfo[position].clone_url))
+                    startActivity(intent)
+                }
+            })
+        binding.recyclerviewRepositoryList.run {
+            adapter = followingListAdapter
+            addItemDecoration(VerticalItemDecoration(10, null))
+        }
 
     }
     @SuppressLint("CheckResult")
@@ -61,6 +71,17 @@ class FollowingListFragment : Fragment() {
 
     }
 
+   private fun changeLayoutManager() {
+       binding.buttonGridlayoutList.setOnClickListener{
+           binding.recyclerviewRepositoryList.layoutManager = GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
+           binding.recyclerviewRepositoryList.addItemDecoration(VerticalItemDecoration(10, 10))
+       }
+
+       binding.buttonLinearlayoutList.setOnClickListener{
+           binding.recyclerviewRepositoryList.layoutManager = LinearLayoutManager(requireContext())
+       }
+
+   }
 
 
 }

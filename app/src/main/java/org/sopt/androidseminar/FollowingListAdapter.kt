@@ -52,6 +52,8 @@ class FollowingListAdapter(val listener: OnItemClickListener) : RecyclerView.Ada
 
     override fun getItemCount() = differ.currentList.size
 
+
+
     override fun onBindViewHolder(
         holder: FollowingUserViewHolder,
         position: Int
