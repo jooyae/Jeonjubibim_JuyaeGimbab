@@ -1,6 +1,7 @@
-package org.sopt.androidseminar
+package org.sopt.androidseminar.api
 
 import okhttp3.OkHttpClient
+import org.sopt.androidseminar.home.api.GithubApi
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory

@@ -1,4 +1,4 @@
-package org.sopt.androidseminar
+package org.sopt.androidseminar.home.dto
 
 data class Permissions(
     val admin: Boolean,

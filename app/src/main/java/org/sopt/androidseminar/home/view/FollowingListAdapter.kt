@@ -1,17 +1,14 @@
-package org.sopt.androidseminar
+package org.sopt.androidseminar.home.view
 
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import org.sopt.androidseminar.BR
 import org.sopt.androidseminar.databinding.ItemFollowUserBinding
+import org.sopt.androidseminar.home.dto.RepositoryResponseModelItem
 
 class FollowingListAdapter(val listener: OnItemClickListener) : RecyclerView.Adapter<FollowingListAdapter.FollowingUserViewHolder>() {
     val diffCallback = object : DiffUtil.ItemCallback<RepositoryResponseModelItem>(){

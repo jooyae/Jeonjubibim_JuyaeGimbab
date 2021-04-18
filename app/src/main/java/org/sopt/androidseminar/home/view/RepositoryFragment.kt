@@ -1,29 +1,25 @@
-package org.sopt.androidseminar
+package org.sopt.androidseminar.home.view
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
-import android.widget.GridLayout.VERTICAL
-import android.widget.GridView
-import androidx.databinding.DataBindingUtil.setContentView
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import org.sopt.androidseminar.utils.ItemDecoration
 import org.sopt.androidseminar.databinding.FragmentFollowingListBinding
+import org.sopt.androidseminar.home.dto.RepositoryResponseModelItem
+import org.sopt.androidseminar.home.viewmodel.RepositoryViewModel
+import org.sopt.androidseminar.utils.ItemDecorationRemover.removeItemDecorations
 
-class FollowingListFragment : Fragment() {
-
+class RepositoryFragment : Fragment() {
     lateinit var binding: FragmentFollowingListBinding
     lateinit var followingListAdapter: FollowingListAdapter
-    private val followingUserInfo = mutableListOf<RepositoryResponseModelItem>()
+    private val viewModel: RepositoryViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,8 +33,8 @@ class FollowingListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initRecyclerView()
-        setGithubProfile()
         changeLayoutManager()
+        updateRepository()
     }
 
     private fun initRecyclerView() {
@@ -46,42 +42,35 @@ class FollowingListFragment : Fragment() {
             FollowingListAdapter(object : FollowingListAdapter.OnItemClickListener {
                 override fun itemClickListener(view: View, position: Int) {
                     val intent = Intent(Intent.ACTION_VIEW)
-                    intent.setData(Uri.parse(followingUserInfo[position].clone_url))
+                    intent.setData(Uri.parse(viewModel.repositories.value?.get(position)?.clone_url))
                     startActivity(intent)
                 }
             })
         binding.recyclerviewRepositoryList.run {
             adapter = followingListAdapter
-            addItemDecoration(VerticalItemDecoration(10, null))
+            addItemDecoration(ItemDecoration(10, null))
         }
-
-    }
-    @SuppressLint("CheckResult")
-    fun setGithubProfile() {
-        RetrofitService.githubApi.getRepos("jooyae")
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ list ->
-                followingUserInfo.addAll(list)
-                followingListAdapter.submitList(list)
-            }, {
-                it.printStackTrace()
-            })
-
 
     }
 
    private fun changeLayoutManager() {
        binding.buttonGridlayoutList.setOnClickListener{
+           binding.recyclerviewRepositoryList.removeItemDecorations()
            binding.recyclerviewRepositoryList.layoutManager = GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
-           binding.recyclerviewRepositoryList.addItemDecoration(VerticalItemDecoration(10, 10))
+           binding.recyclerviewRepositoryList.addItemDecoration(ItemDecoration(10, 10))
        }
 
        binding.buttonLinearlayoutList.setOnClickListener{
+           binding.recyclerviewRepositoryList.removeItemDecorations()
            binding.recyclerviewRepositoryList.layoutManager = LinearLayoutManager(requireContext())
+           binding.recyclerviewRepositoryList.addItemDecoration(ItemDecoration(5,0))
        }
 
    }
 
-
+    private fun updateRepository(){
+        viewModel.repositories.observe(viewLifecycleOwner){
+            followingListAdapter.submitList(it)
+        }
+    }
 }
