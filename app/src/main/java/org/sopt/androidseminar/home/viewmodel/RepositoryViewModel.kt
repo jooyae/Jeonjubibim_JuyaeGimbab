@@ -22,6 +22,11 @@ class RepositoryViewModel : ViewModel() {
 //        _repositories.value = list
 //    }
 
+    fun removeRepository(position: Int) {
+        _repositories.value?.removeAt(position)
+    }
+
+
     init {
         setGithubProfile()
     }

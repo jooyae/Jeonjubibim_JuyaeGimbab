@@ -14,9 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import org.sopt.androidseminar.SwipeHelper
 import org.sopt.androidseminar.utils.ItemDecoration
 import org.sopt.androidseminar.databinding.FragmentFollowingListBinding
-import org.sopt.androidseminar.home.dto.RepositoryResponseModelItem
 import org.sopt.androidseminar.home.viewmodel.RepositoryViewModel
-import org.sopt.androidseminar.utils.ItemDecorationRemover.removeItemDecorations
 
 class RepositoryFragment : Fragment() {
     lateinit var binding: FragmentFollowingListBinding
@@ -66,13 +64,20 @@ class RepositoryFragment : Fragment() {
        }
    }
 
-    fun changeItemPosition() {
-        val swipeHelper = SwipeHelper(object: SwipeHelper.DragItems{
+    private fun changeItemPosition() {
+        val swipeHelper = SwipeHelper(object: SwipeHelper.ItemTouchCallback{
             override fun changePosition(fromPosition: Int, toPosition: Int) {
                 viewModel.swipeItems(fromPosition,toPosition)
                 followingListAdapter.notifyItemMoved(fromPosition,toPosition)
             }
+
+            override fun removeItem(position: Int) {
+                viewModel.removeRepository(position)
+                followingListAdapter.notifyItemRemoved(position)
+            }
         })
+
+
         val itemTouchHelper = ItemTouchHelper(swipeHelper)
         itemTouchHelper.attachToRecyclerView(binding.recyclerviewRepositoryList)
     }
