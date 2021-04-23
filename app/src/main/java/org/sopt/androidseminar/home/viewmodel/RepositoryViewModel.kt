@@ -27,13 +27,9 @@ class RepositoryViewModel : ViewModel() {
     }
 
 
-    init {
-        setGithubProfile()
-    }
-
     @SuppressLint("CheckResult")
-    fun setGithubProfile() {
-        RetrofitService.githubApi.getRepos("jooyae")
+    fun searchRepository(name : String) {
+        RetrofitService.githubApi.getRepos(name)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ list ->

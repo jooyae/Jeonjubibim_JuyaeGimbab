@@ -3,21 +3,23 @@ package org.sopt.androidseminar.home.view
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.sopt.androidseminar.SwipeHelper
+import org.sopt.androidseminar.databinding.FragmentRepositoryBinding
 import org.sopt.androidseminar.utils.ItemDecoration
-import org.sopt.androidseminar.databinding.FragmentFollowingListBinding
 import org.sopt.androidseminar.home.viewmodel.RepositoryViewModel
 
 class RepositoryFragment : Fragment() {
-    lateinit var binding: FragmentFollowingListBinding
+    lateinit var binding: FragmentRepositoryBinding
     lateinit var followingListAdapter: FollowingListAdapter
     private val viewModel: RepositoryViewModel by viewModels()
 
@@ -25,17 +27,22 @@ class RepositoryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentFollowingListBinding.inflate(inflater, container, false)
+        binding = FragmentRepositoryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.editextSearchUser.setText(requireActivity().intent.getStringExtra("name").toString())
+        val name = binding.editextSearchUser.text.toString()
+        viewModel.searchRepository(name)
+
         initRecyclerView()
         changeLayoutManager()
         updateRepository()
         changeItemPosition()
+        searchGithubRepo()
     }
 
     private fun initRecyclerView() {
@@ -52,6 +59,12 @@ class RepositoryFragment : Fragment() {
             binding.recyclerviewRepositoryList.addItemDecoration(ItemDecoration(10, 10))
         }
 
+    }
+
+    fun searchGithubRepo(){
+        binding.buttonSearchUser.setOnClickListener {
+            viewModel.searchRepository(binding.editextSearchUser.text.toString())
+        }
     }
 
    private fun changeLayoutManager() {

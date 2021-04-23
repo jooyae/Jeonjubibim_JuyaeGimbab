@@ -20,7 +20,7 @@ class SwipeHelper(private val callback: ItemTouchCallback): ItemTouchHelper.Simp
         callback.changePosition(viewHolder.adapterPosition, target.adapterPosition)
         return true
     }
-    
+
 
     override fun getSwipeDirs(
         recyclerView: RecyclerView,

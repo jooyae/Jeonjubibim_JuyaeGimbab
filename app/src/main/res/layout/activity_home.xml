@@ -3,6 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    
+    <data>
+        <variable
+            name="view"
+            type="android.view.View" />
+        
+    </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -20,7 +27,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/toolbar_home"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/pink_two"
         android:elevation="0dp"
         app:layout_constraintTop_toTopOf="parent">
@@ -28,7 +35,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintlayout_home_first"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/textview_toolbar_title"
@@ -36,11 +43,12 @@
                 android:layout_height="0dp"
                 android:text="Juyae's Github Repository"
                 android:textStyle="bold"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
             <Button
                 android:id="@+id/button_home_more"
@@ -60,30 +68,55 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/constraintlayout_home_second"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingHorizontal="20dp"
-    app:layout_constraintTop_toBottomOf="@id/toolbar_home"
-    app:layout_constraintStart_toStartOf="@id/toolbar_home">
-
-
-    <ImageView
-        android:id="@+id/imageview_profile"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintlayout_home_second"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/juyaeiscute"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.4" />
+        android:paddingHorizontal="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/toolbar_home"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_home">
+
+        <ImageView
+            android:id="@+id/imageview_gallery"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/ic_notice"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintBottom_toBottomOf="@+id/textview_home_gallery"
+            app:layout_constraintEnd_toStartOf="@+id/textview_home_gallery"
+            app:layout_constraintHorizontal_bias="0.005"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textview_home_gallery"/>
+
+        <TextView
+            android:id="@+id/textview_home_gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text=" Click here to see Juyae's Gallery "
+            android:textColor="@color/gray"
+            android:textStyle="italic"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageview_gallery"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
+        <ImageView
+            android:id="@+id/imageview_profile"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/juyaeiscute"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_home_gallery"
+            app:layout_constraintWidth_percent="0.4" />
 
-    <TextView
+        <TextView
             android:id="@+id/textview_profile_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,23 +136,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textview_profile_id" />
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_profile_name">
+        <ScrollView
+            android:id="@+id/scrollview_home_profile"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textview_profile_name">
 
-        <TextView
-            android:id="@+id/textview_profile_intro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/home_intro"
-            android:textColor="@color/black" />
-    </ScrollView>
+            <TextView
+                android:id="@+id/textview_profile_intro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_intro"
+                android:textColor="@color/black" />
+        </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
