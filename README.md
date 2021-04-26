@@ -23,7 +23,7 @@
 :heavy_check_mark: **2주차 개념 정리**
 
 
-:bulb: **FRAGMENT**는 UI를 개별적으로 분할할 수 있도록 하여 Activity UI에 **모듈성과 재사용성**을 높여준다는 사실 ! 앞으로 Activity보다 Fragment 를 더 활용해봐야겠다. 프래그먼트의 생명주기는 액티비티와 달라서 **(1) onCreateView()** 에서는 뷰와 관련된 초기화들이 이루어지고**(2) onViewCreated()** 에서는 **프래그먼트가 액티비티에 접근**할 수 있게 해준다!
+:bulb: **FRAGMENT**는 UI를 개별적으로 분할할 수 있도록 하여 Activity UI에 **모듈성과 재사용성**을 높여준다는 사실 ! 앞으로 Activity보다 Fragment 를 더 활용해봐야겠다. 프래그먼트의 생명주기는 액티비티와 달라서 **(1) onCreateView()** 에서는 뷰와 관련된 초기화들이 이루어지고 **(2) onViewCreated()** 에서는 **프래그먼트가 액티비티에 접근**할 수 있게 해준다!
 
 :bulb: **LIST** 를 띄워주기 위해서는, Recyclerview를 사용한다. 나는 Recyclerview 공포증이 있었는데 ,, 나에겐 너무 어려웠던... 하지만 이번 세미나를 다시 들으면서 하나하나 다시 정리하고 복습하니까 이제 무섭지 않은 리사이클러뷰 :curly_loop: 다른 예제들도 보면서 더 연습해봐야겠다 !  Recyclerview 작업 순서는 다음과 같다. 
 
