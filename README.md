@@ -58,9 +58,13 @@
 3. RecyclerView Item 에 기능 추가하기 
 
 :one: item 길게 눌러서 위치를 변경하기 
+
 :two: item 옆으로 swipe해서 delete 하기 
+
 :three: 버튼 추가해서 linear -> grid 로 바꿔보기 
+
 :four: 버튼 눌렀을 때 효과 넣어주기 
+
 :five: Item Decoration 
 
 <img src = "https://user-images.githubusercontent.com/58849278/115998031-529b3600-a620-11eb-9667-e36795f7768b.gif" width = "300" height = "500" >
