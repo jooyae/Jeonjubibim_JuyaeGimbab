@@ -77,6 +77,8 @@
 이 부분은 코드에 한번 적용해보았습니다! 패키지 확인 
 
  1. 객체지향 한 걸음 더 -> BindingAdapter, UiState 
+ 
+ <img width="329" alt="스크린샷 2021-04-27 오후 2 33 40" src="https://user-images.githubusercontent.com/58849278/116190434-a2cfe080-a765-11eb-9741-0e66bb569d2e.png">
 
  2. notifyDataSetChanged -> diffUtil 사용 
  
