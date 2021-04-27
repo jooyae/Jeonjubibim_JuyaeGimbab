@@ -47,7 +47,9 @@
 1. GridLayoutManager 사용해보기 
 
 :one: 홈화면에서 다음 화면으로 이동을 했을 때, LinearLayout 버튼과 GridLayout 버튼을 눌렀을 때 각각 다음 화면처럼 레이아웃이 바뀌는 것을 볼 수 있습니다. 
+
 :two: 검색할 수 있는 기능을 추가하여 깃허브 사용자 아이디를 검색하면 해당 유저의 레포 정보들이 다음과 같이 뜨는 것을 볼 수 있습니다. 
+
 :three: 아이템을 눌렀을 때, 해당 유저의 레포로 이동하는 기능도 추가하였습니다. 
 
 <img src ="https://user-images.githubusercontent.com/58849278/116035956-d7c62f80-a6a0-11eb-9ecd-7149b274f743.png" width = "200" height = "400"><img src ="https://user-images.githubusercontent.com/58849278/116036869-48ba1700-a6a2-11eb-8104-2057cfd7637a.png" width = "200" height = "400"><img src ="https://user-images.githubusercontent.com/58849278/116037041-8028c380-a6a2-11eb-9869-04432163a58f.png" width = "200" height = "400">
@@ -75,6 +77,8 @@
 이 부분은 코드에 한번 적용해보았습니다! 패키지 확인 
 
  1. 객체지향 한 걸음 더 -> BindingAdapter, UiState 
+ 
+ <img width="329" alt="스크린샷 2021-04-27 오후 2 33 40" src="https://user-images.githubusercontent.com/58849278/116190434-a2cfe080-a765-11eb-9741-0e66bb569d2e.png">
 
  2. notifyDataSetChanged -> diffUtil 사용 
  
@@ -107,5 +111,7 @@
 
 <img src = "https://user-images.githubusercontent.com/58849278/116039905-4bb70680-a6a6-11eb-86f5-ff6b87d137ff.gif" width = "200" height = "450" ><img src = "https://user-images.githubusercontent.com/58849278/116041453-2e833780-a6a8-11eb-92ed-4cebf0ac2d58.gif" width = "200" height = "450" ><img src = "https://user-images.githubusercontent.com/58849278/116041670-6f7b4c00-a6a8-11eb-8ea5-2607e3fed21d.gif" width = "200" height = "450" >
 
+
+ 
 
  
