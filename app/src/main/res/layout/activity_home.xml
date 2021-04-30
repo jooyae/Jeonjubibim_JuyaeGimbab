@@ -8,7 +8,6 @@
         <variable
             name="view"
             type="android.view.View" />
-        
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -95,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text=" Click here to see Juyae's Gallery "
+            android:text=" More about Me "
             android:textColor="@color/gray"
             android:textStyle="italic"
             android:gravity="center"
