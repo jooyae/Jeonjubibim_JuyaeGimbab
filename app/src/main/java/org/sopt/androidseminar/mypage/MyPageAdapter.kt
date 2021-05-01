@@ -3,7 +3,6 @@ package org.sopt.androidseminar.mypage
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import org.sopt.androidseminar.databinding.ActivityMyPageBinding
 import org.sopt.androidseminar.databinding.ItemMypageBinding
 import org.sopt.androidseminar.mypage.data.IntroData
 
@@ -23,7 +22,7 @@ class MyPageAdapter : RecyclerView.Adapter<MyPageAdapter.MyPageViewHolder>(){
         holder.bind(introData[position])
     }
 
-    override fun getItemCount(): Int = 3
+    override fun getItemCount(): Int = introData.size
 
     class MyPageViewHolder(
         private val binding : ItemMypageBinding

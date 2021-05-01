@@ -29,17 +29,17 @@ class MyPageActivity : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 when (position) {
                     0 -> IntroData(
-                        imageview_Intro = "",
+                        imageview_Intro = "@drawable/ic_home_img_step3",
                         textview_Title = "성장하고 싶은 개발자",
                         textview_Subtitle = "SWU dept of Sotfware Convergence"
                     )
                     1 -> IntroData(
-                        imageview_Intro = "",
+                        imageview_Intro = "@drawable/ic_home_img_step1",
                         textview_Title = "도전을 무서워하지 않는 개발자",
                         textview_Subtitle = "BE SOPT ANDROID"
                     )
                     2 -> IntroData(
-                        imageview_Intro = "",
+                        imageview_Intro = "@drawable/ic_home_img_step4",
                         textview_Title = "Learn To Share, Share To Learn",
                         textview_Subtitle = "주예로이드 화이팅 >_<"
                     )
