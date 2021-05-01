@@ -116,7 +116,7 @@
 ## :pushpin: Record 
 
 
-<img src="https://user-images.githubusercontent.com/56873136/114165056-fd47ff00-9966-11eb-9108-8b1b13dc2896.gif" width = "300" height = "600"><img src="https://user-images.githubusercontent.com/56873136/114165078-05a03a00-9967-11eb-9553-e175976d2450.gif" width = "300" height = "600"><img src="https://user-images.githubusercontent.com/56873136/114165832-f1a90800-9967-11eb-8288-a30c0314642b.gif" width = "300" height = "600">
+<img src="https://user-images.githubusercontent.com/56873136/114165056-fd47ff00-9966-11eb-9108-8b1b13dc2896.gif" width = "200" height = "500"><img src="https://user-images.githubusercontent.com/56873136/114165078-05a03a00-9967-11eb-9553-e175976d2450.gif" width = "200" height = "500"><img src="https://user-images.githubusercontent.com/56873136/114165832-f1a90800-9967-11eb-8288-a30c0314642b.gif" width = "200" height = "500">
 
 
 
