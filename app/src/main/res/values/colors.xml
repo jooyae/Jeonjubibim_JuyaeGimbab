@@ -16,5 +16,7 @@
     <color name="purple">#5D5FEF</color>
     <color name="purple_two">#7879F1</color>
     <color name ="purple_three">#A5A6F6</color>
+    <color name = "orange_two">#F0FFBDA7</color>
+    <color name = "orange_three">#FFA487</color>
 
 </resources>
