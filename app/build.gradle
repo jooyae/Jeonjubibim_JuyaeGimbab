@@ -78,4 +78,7 @@ dependencies {
 
     // Kotlinjava
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
+
+    //Dot Indicator
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
 }
