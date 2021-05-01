@@ -18,7 +18,9 @@ class MyPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMyPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         showViewPager()
+        setMyPageAdapter()
     }
 
     private fun showViewPager() {
@@ -45,6 +47,11 @@ class MyPageActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+    private fun setMyPageAdapter(){
+        val myPageAdapter = MyPageAdapter()
+        binding.viewpagerMypage.adapter = myPageAdapter
+        binding.dotsindicatorMypage.setViewPager2(binding.viewpagerMypage)
     }
 
 }
