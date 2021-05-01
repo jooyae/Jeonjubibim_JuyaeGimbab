@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import org.sopt.androidseminar.userinfo.UserInfoActivity
 import org.sopt.androidseminar.databinding.ActivityHomeBinding
+import org.sopt.androidseminar.mypage.MyPageActivity
 
 class HomeActivity : AppCompatActivity() {
     lateinit var binding : ActivityHomeBinding
@@ -22,7 +23,12 @@ class HomeActivity : AppCompatActivity() {
             intent.putExtra("name", binding.textviewProfileId.text.toString())
             startActivity(intent)
         }
-
+        binding.textviewHomeGallery.setOnClickListener{
+            val intent = Intent(this@HomeActivity, MyPageActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
+
 
 }
