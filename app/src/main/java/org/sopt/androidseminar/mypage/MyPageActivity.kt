@@ -8,50 +8,40 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import org.sopt.androidseminar.R
 import org.sopt.androidseminar.databinding.ActivityMyPageBinding
-import org.sopt.androidseminar.mypage.data.IntroData
+import org.sopt.androidseminar.uploadImage
 
 class MyPageActivity : AppCompatActivity() {
     lateinit var binding: ActivityMyPageBinding
-    lateinit var viewPager: ViewPager2
+    private var fragment: ImageSlideFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        showViewPager()
-        setMyPageAdapter()
+        val imageSlideFragment = fragment
+        val transaction = supportFragmentManager.beginTransaction()
+        if (imageSlideFragment != null) {
+            transaction.add(R.id.fragment_imageslide, imageSlideFragment)
+        }
+        transaction.commit()
+
+        val pagerAdapter = ScreenSlideMyPageAdapter(this)
+        binding.viewpagerMypage.adapter = pagerAdapter
+
     }
 
-    private fun showViewPager() {
-        viewPager = binding.viewpagerMypage
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                when (position) {
-                    0 -> IntroData(
-                        imageview_Intro = "@drawable/ic_home_img_step3",
-                        textview_Title = "성장하고 싶은 개발자",
-                        textview_Subtitle = "SWU dept of Sotfware Convergence"
-                    )
-                    1 -> IntroData(
-                        imageview_Intro = "@drawable/ic_home_img_step1",
-                        textview_Title = "도전을 무서워하지 않는 개발자",
-                        textview_Subtitle = "BE SOPT ANDROID"
-                    )
-                    2 -> IntroData(
-                        imageview_Intro = "@drawable/ic_home_img_step4",
-                        textview_Title = "Learn To Share, Share To Learn",
-                        textview_Subtitle = "주예로이드 화이팅 >_<"
-                    )
+        private inner class ScreenSlideMyPageAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
+            override fun getItemCount(): Int = 3
 
+            override fun createFragment(position: Int): Fragment {
+                return when (position) {
+                    0 -> ImageSlideFragment(R.drawable.myphoto)
+                    1 -> ImageSlideFragment(R.drawable.myprofile)
+                    else -> ImageSlideFragment(R.drawable.ic_home_img_step4)
                 }
             }
-        })
-    }
-    private fun setMyPageAdapter(){
-        val myPageAdapter = MyPageAdapter()
-        binding.viewpagerMypage.adapter = myPageAdapter
-        binding.dotsindicatorMypage.setViewPager2(binding.viewpagerMypage)
-    }
+        }
+
 
 }
