@@ -13,12 +13,13 @@
         android:id="@+id/imageview_item_mypage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/myphoto"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_home_img_step3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_height="100dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

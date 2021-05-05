@@ -18,24 +18,24 @@
             android:id="@+id/viewpager_mypage"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="60dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_height="500dp" />
 
-        <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
-            android:id="@+id/dotsindicator_mypage"
-            android:layout_width="wrap_content"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tablayout_viewpager_indicator"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:dotsColor="@color/pink_three"
-            app:dotsSize="8dp"
-            app:dotsSpacing="8dp"
-            app:dotsWidthFactor="1"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            app:tabIndicator="@null"
+            app:tabGravity="center"
+            app:tabPadding="4dp"
+            app:tabBackground="@drawable/tab_indicator"
+            app:tabPaddingStart="3dp"
+            app:tabPaddingEnd="3dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/viewpager_mypage"
-            app:selectedDotColor="@color/pink" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewpager_mypage"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -12,10 +12,24 @@ import org.sopt.androidseminar.databinding.FragmentImageSlideBinding
 
 class ImageSlideFragment(val image : Int) : Fragment() {
     lateinit var binding : FragmentImageSlideBinding
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentImageSlideBinding.inflate(layoutInflater,container,false)
+        return binding.root
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentImageSlideBinding.inflate(layoutInflater)
         binding.imageviewItemMypage.setImageResource(image)
+
+
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
     }
 
 }
