@@ -1,4 +1,4 @@
-package org.sopt.androidseminar.signin
+package org.sopt.androidseminar.signin.view
 
 import android.app.Activity
 import android.content.Intent
@@ -8,12 +8,10 @@ import android.util.Log
 import android.widget.Toast
 import okhttp3.ResponseBody
 import org.json.JSONObject
-import org.sopt.androidseminar.ResponseLoginData
+import org.sopt.androidseminar.signin.dto.ResponseLoginData
 import org.sopt.androidseminar.api.ServiceCreator
-import org.sopt.androidseminar.api.SoptApi
-import org.sopt.androidseminar.signup.SignUpActivity
 import org.sopt.androidseminar.databinding.ActivitySignInBinding
-import org.sopt.androidseminar.home.dto.RequestLoginData
+import org.sopt.androidseminar.signin.dto.RequestLoginData
 import org.sopt.androidseminar.home.view.HomeActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,7 +27,6 @@ class SignInActivity : AppCompatActivity() {
         initButtonClickEvent()
 
     }
-
 
     private fun initButtonClickEvent() {
 
@@ -63,11 +60,8 @@ class SignInActivity : AppCompatActivity() {
                 override fun onFailure(call: Call<ResponseLoginData>, t: Throwable) {
                     Log.d("NetworkTest", "error:$t")
                 }
-
             })
         }
-
-
     }
 
     fun showError(error: ResponseBody?) {

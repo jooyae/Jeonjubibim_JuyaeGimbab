@@ -1,4 +1,4 @@
-package org.sopt.androidseminar.home.dto
+package org.sopt.androidseminar.signin.dto
 
 import com.google.gson.annotations.SerializedName
 
