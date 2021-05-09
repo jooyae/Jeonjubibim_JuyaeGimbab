@@ -6,9 +6,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import okhttp3.ResponseBody
+import org.json.JSONObject
+import org.sopt.androidseminar.ResponseLoginData
+import org.sopt.androidseminar.api.ServiceCreator
+import org.sopt.androidseminar.api.SoptApi
 import org.sopt.androidseminar.signup.SignUpActivity
 import org.sopt.androidseminar.databinding.ActivitySignInBinding
+import org.sopt.androidseminar.home.dto.RequestLoginData
 import org.sopt.androidseminar.home.view.HomeActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignInActivity : AppCompatActivity() {
     lateinit var binding: ActivitySignInBinding
@@ -19,41 +28,59 @@ class SignInActivity : AppCompatActivity() {
         setContentView(binding.root)
         initButtonClickEvent()
 
-        Log.d("onCreate","onCreate 실행")
     }
+
 
     private fun initButtonClickEvent() {
+
         binding.btnLogin.setOnClickListener {
-            val userID = binding.editextSigninId.text
-            val userPWD = binding.editextSigninPwd.text
-            if (userID.isNullOrBlank() || userPWD.isNullOrBlank()) {
-                Toast.makeText(
-                        this@SignInActivity,
-                        "아이디/비밀번호를 확인해주세요!",
-                        Toast.LENGTH_SHORT
-                ).show()
-            } else {
-                Toast.makeText(
-                        this@SignInActivity,
-                        "로그인 성공",
-                        Toast.LENGTH_SHORT
-                ).show()
-                val intent = Intent(this@SignInActivity, HomeActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
+            val requestLoginData = RequestLoginData(
+                id = binding.editextSigninId.text.toString(),
+                password = binding.editextSigninPwd.text.toString()
+            )
+
+            val call: Call<ResponseLoginData> = ServiceCreator.soptService
+                .postLogin(requestLoginData)
+
+            call.enqueue(object : Callback<ResponseLoginData> {
+                override fun onResponse(
+                    call: Call<ResponseLoginData>,
+                    response: Response<ResponseLoginData>
+                ) {
+                    if (response.isSuccessful) {
+                        val data = response.body()?.data
+                        Log.e("success", "success")
+                        Toast.makeText(this@SignInActivity, data?.user_nickname, Toast.LENGTH_SHORT)
+                            .show()
+                        val intent = Intent(this@SignInActivity, HomeActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        showError(response.errorBody())
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseLoginData>, t: Throwable) {
+                    Log.d("NetworkTest", "error:$t")
+                }
+
+            })
         }
-        binding.textviewSignin.setOnClickListener{
-            val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
-            startActivityForResult(intent, SIGN_UP_RESULT_CODE)
-        }
+
+
     }
 
-    override fun onActivityResult(requestCode : Int, resultCode: Int,data:Intent?){
+    fun showError(error: ResponseBody?) {
+        val e = error ?: return
+        val ob = JSONObject(e.string())
+        Log.e("error", ob.getString("message"))
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK){
-            when(requestCode){
-                100-> {
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                100 -> {
                     binding.editextSigninId.setText(data!!.getStringExtra("id"))
                     binding.editextSigninPwd.setText(data!!.getStringExtra("pwd"))
 
@@ -61,34 +88,9 @@ class SignInActivity : AppCompatActivity() {
             }
         }
     }
+
     companion object {
         private const val SIGN_UP_RESULT_CODE = 100
-    }
-
-
-    override fun onStart() {
-        super.onStart()
-        Log.d("onResume","onResume 살행")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("onResume","onResume 살행")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("onPause","onPause 실행")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("onStop","onStop 실행")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("onDestroy", "onDestroy 실행")
     }
 
 }

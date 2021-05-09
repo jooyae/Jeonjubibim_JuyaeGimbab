@@ -1,4 +1,4 @@
-package org.sopt.androidseminar.home.api
+package org.sopt.androidseminar.api
 
 import io.reactivex.Single
 import org.sopt.androidseminar.home.dto.RepositoryResponseModelItem
