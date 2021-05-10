@@ -1,4 +1,4 @@
-package org.sopt.androidseminar.api
+package org.sopt.androidseminar.api.github
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

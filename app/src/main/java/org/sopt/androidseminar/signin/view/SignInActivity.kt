@@ -9,10 +9,11 @@ import android.widget.Toast
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import org.sopt.androidseminar.signin.dto.ResponseLoginData
-import org.sopt.androidseminar.api.ServiceCreator
+import org.sopt.androidseminar.api.sopt.ServiceCreator
 import org.sopt.androidseminar.databinding.ActivitySignInBinding
 import org.sopt.androidseminar.signin.dto.RequestLoginData
 import org.sopt.androidseminar.home.view.HomeActivity
+import org.sopt.androidseminar.signup.SignUpActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,6 +26,7 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initButtonClickEvent()
+        showSignup()
 
     }
 
@@ -46,12 +48,13 @@ class SignInActivity : AppCompatActivity() {
                 ) {
                     if (response.isSuccessful) {
                         val data = response.body()?.data
-                        Log.e("success", "success")
+                        Log.e("success", "로그인 성공")
                         Toast.makeText(this@SignInActivity, data?.user_nickname, Toast.LENGTH_SHORT)
                             .show()
                         val intent = Intent(this@SignInActivity, HomeActivity::class.java)
                         startActivity(intent)
-                        finish()
+                        showSignup()
+
                     } else {
                         showError(response.errorBody())
                     }
@@ -70,11 +73,19 @@ class SignInActivity : AppCompatActivity() {
         Log.e("error", ob.getString("message"))
     }
 
+    fun showSignup(){
+        binding.textviewSignin.setOnClickListener {
+            val intent = Intent(this@SignInActivity, SignUpActivity:: class.java)
+            startActivityForResult(intent, SIGN_UP_RESULT_CODE)
+
+        }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
-                100 -> {
+                SIGN_UP_RESULT_CODE -> {
                     binding.editextSigninId.setText(data!!.getStringExtra("id"))
                     binding.editextSigninPwd.setText(data!!.getStringExtra("pwd"))
 

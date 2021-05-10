@@ -1,6 +1,5 @@
 package org.sopt.androidseminar.home.view
 
-import android.app.Service
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -12,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import org.sopt.androidseminar.api.ServiceCreator
 import org.sopt.androidseminar.utils.SwipeHelper
 import org.sopt.androidseminar.databinding.FragmentRepositoryBinding
 import org.sopt.androidseminar.utils.ItemDecoration
