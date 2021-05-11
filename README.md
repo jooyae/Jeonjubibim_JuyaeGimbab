@@ -133,7 +133,8 @@
 | [Glide](https://github.com/bumptech/glide)                   | URL 형식의 이미지          |       
 | [RxJava](https://github.com/ReactiveX/RxJava)                   | Observer Pattern 사용        |    
 | [RxKotlin](https://github.com/ReactiveX/RxKotlin)                   | Observable Method 활용        |                  
-| [LiveData](https://github.com/ravi8x/LiveData)                   | LifeCycleOwner 관찰자 등록        |    
+| [LiveData](https://github.com/ravi8x/LiveData)                   | LifeCycleOwner 관찰자 등록        |   
+| [Dagger2](https://github.com/google/dagger)                   | 의존성 주입        |   
 
 ## :seedling: **기본 과제**
 
@@ -228,5 +229,11 @@
  ## :clapper: Record 
 
 <img src = "https://user-images.githubusercontent.com/58849278/116039905-4bb70680-a6a6-11eb-86f5-ff6b87d137ff.gif" width = "200" height = "450" ><img src = "https://user-images.githubusercontent.com/58849278/116041453-2e833780-a6a8-11eb-92ed-4cebf0ac2d58.gif" width = "200" height = "450" ><img src = "https://user-images.githubusercontent.com/58849278/116041670-6f7b4c00-a6a8-11eb-8ea5-2607e3fed21d.gif" width = "200" height = "450" >
+
+
+## :books: Android Assignment Week 4
+
+![image](https://user-images.githubusercontent.com/58849278/117603200-7a94a880-b18d-11eb-9d56-f4f3ce6c9391.png)
+
 
 
