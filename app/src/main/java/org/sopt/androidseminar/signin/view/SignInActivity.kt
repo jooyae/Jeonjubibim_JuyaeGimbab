@@ -27,7 +27,6 @@ class SignInActivity : AppCompatActivity() {
         setContentView(binding.root)
         initButtonClickEvent()
         showSignup()
-
     }
 
     private fun initButtonClickEvent() {
@@ -49,8 +48,7 @@ class SignInActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         val data = response.body()?.data
                         Log.e("success", "로그인 성공")
-                        Toast.makeText(this@SignInActivity, data?.user_nickname, Toast.LENGTH_SHORT)
-                            .show()
+                        Toast.makeText(this@SignInActivity, data?.user_nickname, Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@SignInActivity, HomeActivity::class.java)
                         startActivity(intent)
                         showSignup()
@@ -59,7 +57,6 @@ class SignInActivity : AppCompatActivity() {
                         showError(response.errorBody())
                     }
                 }
-
                 override fun onFailure(call: Call<ResponseLoginData>, t: Throwable) {
                     Log.d("NetworkTest", "error:$t")
                 }
