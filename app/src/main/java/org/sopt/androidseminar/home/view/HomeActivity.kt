@@ -1,15 +1,20 @@
 package org.sopt.androidseminar.home.view
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.lifecycle.LifecycleOwner
 import org.sopt.androidseminar.api.reqres.ReqresCreator
 import org.sopt.androidseminar.api.reqres.dto.RequestReqresUsers
 import org.sopt.androidseminar.api.reqres.dto.ResponseReqresUsers
 import org.sopt.androidseminar.userinfo.UserInfoActivity
 import org.sopt.androidseminar.databinding.ActivityHomeBinding
+import org.sopt.androidseminar.home.followers.FollowerListAdapter
+import org.sopt.androidseminar.home.followers.ResponseGithubFollowersItem
+import org.sopt.androidseminar.home.viewmodel.FollowerListViewModel
 import org.sopt.androidseminar.home.viewmodel.ReqresListViewModel
 import org.sopt.androidseminar.mypage.MyPageActivity
 import retrofit2.Call
@@ -18,17 +23,20 @@ import retrofit2.Callback
 class HomeActivity : AppCompatActivity() {
     lateinit var binding : ActivityHomeBinding
     lateinit var reqresListAdapter: ReqresListAdapter
+    lateinit var followerListAdapter: FollowerListAdapter
     private val viewModel by viewModels<ReqresListViewModel>()
+    private val followerViewModel by viewModels<FollowerListViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         viewModel.getFriendsList(2)
+        followerViewModel.showFollowers("jooyae")
         initButtonClick()
         showReqresList()
+        showFollowerList()
     }
 
     fun initButtonClick(){
@@ -56,9 +64,18 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    fun showFollowerList(){
+        followerListAdapter = FollowerListAdapter()
+        binding.recyclerviewGithubFollowers.adapter = followerListAdapter
 
+        followerViewModel.followerlist.observe(this){
+            followerViewModel.followerlist.value?.data?.forEach{
+                followerListAdapter.followerList.add(it)
+                followerListAdapter.notifyDataSetChanged()
 
-
+            }
+        }
+    }
 
 
 

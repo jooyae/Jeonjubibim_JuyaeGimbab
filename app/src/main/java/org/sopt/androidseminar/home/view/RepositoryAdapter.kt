@@ -5,17 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.ItemTouchHelper.DOWN
-import androidx.recyclerview.widget.ItemTouchHelper.UP
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.androidseminar.BR
 import org.sopt.androidseminar.databinding.ItemFollowUserBinding
-import org.sopt.androidseminar.home.dto.GithubRepo
 import org.sopt.androidseminar.home.dto.RepositoryResponseModelItem
-import java.util.*
 
-class FollowingListAdapter(val listener: OnItemClickListener) : RecyclerView.Adapter<FollowingListAdapter.FollowingUserViewHolder>() {
+class RepositoryAdapter(val listener: OnItemClickListener) : RecyclerView.Adapter<RepositoryAdapter.FollowingUserViewHolder>() {
     val diffCallback = object : DiffUtil.ItemCallback<RepositoryResponseModelItem>(){
         override fun areItemsTheSame(
             oldItem: RepositoryResponseModelItem,
